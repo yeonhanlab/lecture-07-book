@@ -1,6 +1,28 @@
-import styles from "./SearchBar.module.css";
 import { type ChangeEvent, type SubmitEvent, useState } from "react";
 import { useNavigate } from "react-router";
+import styled from "styled-components";
+
+const Box = styled.form`
+    display: flex;
+    gap: 10px;
+    width: 100%;
+`;
+
+const Input = styled.input`
+    flex: 1;
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+`;
+
+const Button = styled.button`
+    padding: 12px 18px;
+    border: none;
+    background-color: black;
+    color: white;
+    border-radius: 8px;
+    cursor: pointer;
+`;
 
 
 function SearchBar() {
@@ -36,17 +58,13 @@ function SearchBar() {
     }
 
     return (
-        <form
-            className={styles.box}
-            onSubmit={onSubmit}>
-            <input
-                className={styles.input}
-                onChange={onChange}
+        <Box onSubmit={onSubmit}>
+            <Input onChange={onChange}
             />
-            <button type={"submit"} className={styles.button}>
+            <Button type={"submit"} >
                 검색
-            </button>
-        </form>
+            </Button>
+        </Box>
     );
 }
 export default SearchBar;
